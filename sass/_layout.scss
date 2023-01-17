@@ -20,6 +20,13 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	// flex实现移动元素到新的一行
+	@media only screen and (max-width: $breakpoint-smallest) {
+		flex-wrap: wrap;
+		height: 12rem;
+		align-content: space-around;
+	}
 }
 
 .content {
@@ -56,6 +63,11 @@
 	@media only screen and (max-width: $breakpoint-medium) {
 		padding: 3rem;
 	}
+
+	@media only screen and (max-width: $breakpoint-small) {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 .description {
@@ -69,6 +81,11 @@
 	@media only screen and (max-width: $breakpoint-medium) {
 		padding: 1.5rem;
 		margin-right: 3.5rem;
+	}
+
+	@media only screen and (max-width: $breakpoint-small) {
+		margin-bottom: 2rem;
+		margin-right: 0;
 	}
 }
 
