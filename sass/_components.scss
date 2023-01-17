@@ -398,11 +398,27 @@
 		// background-size: cover;
 
 		// 新的浏览器使用masks(遮罩)，此方法可以解决背景图片无法在CS中改变颜色的问题
-		background-color: var(--color-primary);
-		-webkit-mask-image: url(../img/chevron-thin-right.svg);
-		-webkit-mask-size: cover;
-		mask-image: url(../img/chevron-thin-right.svg);
-		mask-size: cover;
+		// background-color: var(--color-primary);
+		// -webkit-mask-image: url(../img/chevron-thin-right.svg);
+		// -webkit-mask-size: cover;
+		// mask-image: url(../img/chevron-thin-right.svg);
+		// mask-size: cover;
+
+		/*
+			解决浏览器不兼容的问题
+			这种方案的缺陷在于如果是不兼容的浏览器无法设置背景图片颜色
+		*/
+		background-image: url(../img/chevron-thin-right.svg);
+		background-size: cover;
+		@supports (-webkit-mask-image: url()) or (mask-image: url()) {
+			background-color: var(--color-primary);
+			-webkit-mask-image: url(../img/chevron-thin-right.svg);
+			-webkit-mask-size: cover;
+			mask-image: url(../img/chevron-thin-right.svg);
+			mask-size: cover;
+			// 可以解决支持的浏览器也显示灰色的问题，因为上面的background-image
+			background-image: none;
+		}
 	}
 }
 
